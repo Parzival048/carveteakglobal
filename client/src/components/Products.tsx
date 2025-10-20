@@ -1,79 +1,13 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import sofaImage from "@assets/generated_images/Traditional_Sheesham_wood_sofa_set_e3cad8e4.png";
-import bedImage from "@assets/generated_images/Teak_wood_king_bed_frame_b9f60887.png";
-import diningImage from "@assets/generated_images/Sheesham_wood_dining_table_set_1fadc581.png";
-import coffeeTableImage from "@assets/generated_images/Teak_wood_coffee_table_47a5f2c2.png";
-import wardrobeImage from "@assets/generated_images/Sheesham_wood_wardrobe_cabinet_f5ada2d8.png";
-import tvUnitImage from "@assets/generated_images/Teak_wood_TV_console_unit_87da3380.png";
-import bookshelfImage from "@assets/generated_images/Sheesham_wood_bookshelf_unit_88fd0804.png";
-import rockingChairImage from "@assets/generated_images/Teak_wood_rocking_chair_a84fe3f5.png";
-
-const products = [
-  {
-    id: 1,
-    name: "Traditional Sofa Set",
-    description: "Elegant three-seater sofa in premium Sheesham wood with plush cushioning",
-    image: sofaImage,
-    wood: "Sheesham Wood",
-  },
-  {
-    id: 2,
-    name: "King Size Bed Frame",
-    description: "Luxurious bed frame with intricately carved headboard in solid Teak",
-    image: bedImage,
-    wood: "Teak Wood",
-  },
-  {
-    id: 3,
-    name: "Dining Table Set",
-    description: "Six-seater dining set with matching chairs, perfect for family gatherings",
-    image: diningImage,
-    wood: "Sheesham Wood",
-  },
-  {
-    id: 4,
-    name: "Coffee Table",
-    description: "Elegant coffee table with lower shelf, ideal for modern living rooms",
-    image: coffeeTableImage,
-    wood: "Teak Wood",
-  },
-  {
-    id: 5,
-    name: "Wardrobe Cabinet",
-    description: "Spacious double-door wardrobe with ornate carved details and mirror",
-    image: wardrobeImage,
-    wood: "Sheesham Wood",
-  },
-  {
-    id: 6,
-    name: "TV Console Unit",
-    description: "Contemporary TV unit with storage shelves and cable management",
-    image: tvUnitImage,
-    wood: "Teak Wood",
-  },
-  {
-    id: 7,
-    name: "Bookshelf Unit",
-    description: "Tall bookshelf with multiple shelves and decorative molding",
-    image: bookshelfImage,
-    wood: "Sheesham Wood",
-  },
-  {
-    id: 8,
-    name: "Rocking Chair",
-    description: "Comfortable traditional rocking chair with carved armrests",
-    image: rockingChairImage,
-    wood: "Teak Wood",
-  },
-];
+import { useLocation } from "wouter";
+import { products } from "@/data/products";
 
 export function Products() {
-  const scrollToContact = () => {
-    const element = document.querySelector("#contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const [, setLocation] = useLocation();
+
+  const handleViewProduct = (productId: number) => {
+    setLocation(`/product/${productId}`);
   };
 
   return (
@@ -92,19 +26,20 @@ export function Products() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {products.slice(0, 6).map((product) => (
             <Card
               key={product.id}
-              className="overflow-hidden hover-elevate transition-all"
+              className={`overflow-hidden hover-elevate hover-scale-105 hover-shadow-lg cursor-pointer animate-fade-in`}
               data-testid={`card-product-${product.id}`}
+              onClick={() => handleViewProduct(product.id)}
             >
               <CardContent className="p-0">
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[4/3] overflow-hidden hover-zoom">
                   <img
                     src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    alt={product.displayName}
+                    className="w-full h-full object-cover"
                     data-testid={`img-product-${product.id}`}
                   />
                 </div>
@@ -124,14 +59,29 @@ export function Products() {
                 <Button
                   variant="outline"
                   className="w-full"
-                  onClick={scrollToContact}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleViewProduct(product.id);
+                  }}
                   data-testid={`button-learn-more-${product.id}`}
                 >
-                  Learn More
+                  View Details
                 </Button>
               </CardFooter>
             </Card>
           ))}
+        </div>
+
+        {/* View All Collections Button */}
+        <div className="text-center">
+          <Button
+            onClick={() => setLocation("/collections")}
+            size="lg"
+            variant="default"
+            data-testid="button-view-all-collections"
+          >
+            View All Collections
+          </Button>
         </div>
       </div>
     </section>

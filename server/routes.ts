@@ -7,16 +7,18 @@ import { fromZodError } from "zod-validation-error";
 // Email notification function
 async function sendEmailNotification(submission: ContactSubmission): Promise<void> {
   try {
-    const adminEmail = process.env.ADMIN_EMAIL || "info@woodencrafts.com";
-    
+    const adminEmail = process.env.ADMIN_EMAIL || "Carvetealglobal@gmail.com";
+
     // Send email notification using FormSubmit.co
     // This is a free service that doesn't require API keys
     // For production, configure the recipient email in the FormSubmit.co URL
     const emailData = {
-      name: `${submission.name} (Furniture Inquiry)`,
+      name: `${submission.name} (Carve Teak Global - Furniture Inquiry)`,
       email: submission.email,
       phone: submission.phone,
       message: `
+NEW FURNITURE INQUIRY - CARVE TEAK GLOBAL
+
 Customer Details:
 - Name: ${submission.name}
 - Phone: ${submission.phone}
@@ -26,10 +28,11 @@ Message:
 ${submission.message}
 
 ---
+Company: GAU VEDA GLOBAL LLP
 Submission ID: ${submission.id}
 Submitted: ${submission.createdAt.toLocaleString()}
       `.trim(),
-      _subject: `New Furniture Inquiry from ${submission.name}`,
+      _subject: `New Furniture Inquiry from ${submission.name} - Carve Teak Global`,
       _template: "table",
     };
 

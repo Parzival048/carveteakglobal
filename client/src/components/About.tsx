@@ -5,18 +5,18 @@ import craftsmanImage from "@assets/generated_images/Craftsman_at_work_in_worksh
 const features = [
   {
     icon: Award,
-    title: "Premium Quality",
-    description: "Handpicked Sheesham and Teak wood for lasting durability",
+    title: "Exceptional Craftsmanship",
+    description: "Master artisans with decades of experience handcraft every piece with meticulous attention to detail",
   },
   {
     icon: Heart,
-    title: "Traditional Craft",
-    description: "Time-honored techniques passed down through generations",
+    title: "Heritage & Tradition",
+    description: "Centuries-old techniques refined and perfected, passed down through generations of master craftsmen",
   },
   {
     icon: Sparkles,
-    title: "Custom Designs",
-    description: "Bespoke furniture tailored to your unique vision",
+    title: "Bespoke Solutions",
+    description: "Custom furniture tailored to your unique vision and lifestyle, created exclusively for you",
   },
 ];
 
@@ -29,12 +29,11 @@ export function About() {
             className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6"
             data-testid="text-about-title"
           >
-            About Our Craftsmanship
+            Our Promise
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            We are a traditional wooden furniture company dedicated to creating
-            exquisite pieces that blend timeless design with superior
-            craftsmanship.
+            At Carve Teak Global, we are dedicated to creating exquisite handcrafted furniture that transcends time.
+            Each piece is a masterpiece of artistry, quality, and soul—designed to become a cherished heirloom in your home.
           </p>
         </div>
 
@@ -53,7 +52,7 @@ export function About() {
             </h3>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
               For generations, we have been crafting premium wooden furniture
-              using the finest Sheesham and Teak wood. Each piece is
+              using the finest Sagwan and Teak wood. Each piece is
               meticulously handcrafted by skilled artisans who pour their heart
               and soul into every detail.
             </p>

@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "wouter";
 
 const navItems = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Products", href: "#products" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "Our Story", href: "/our-story" },
+  { label: "The Craft", href: "/the-craft" },
+  { label: "Collections", href: "/collections" },
   { label: "Contact", href: "#contact" },
 ];
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,11 +24,18 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNavigation = (href: string) => {
+    // If it's a page route (starts with /), use Wouter navigation
+    if (href.startsWith("/")) {
+      setLocation(href);
       setIsMobileMenuOpen(false);
+    } else {
+      // Otherwise, scroll to section
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setIsMobileMenuOpen(false);
+      }
     }
   };
 
@@ -42,11 +51,11 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
             <button
-              onClick={() => scrollToSection("#home")}
-              className="font-serif text-2xl font-bold text-primary hover-elevate"
+              onClick={() => handleNavigation("#home")}
+              className="font-serif text-2xl font-bold text-primary hover-elevate hover-scale-105 transition-smooth"
               data-testid="link-home"
             >
-              Wooden Crafts
+              Carve Teak Global
             </button>
           </div>
 
@@ -55,15 +64,15 @@ export function Navigation() {
               <Button
                 key={item.href}
                 variant="ghost"
-                onClick={() => scrollToSection(item.href)}
-                className="text-base font-medium"
+                onClick={() => handleNavigation(item.href)}
+                className="text-base font-medium underline-animate transition-smooth"
                 data-testid={`link-${item.label.toLowerCase()}`}
               >
                 {item.label}
               </Button>
             ))}
             <Button
-              onClick={() => scrollToSection("#contact")}
+              onClick={() => handleNavigation("#contact")}
               variant="default"
               className="ml-4"
               data-testid="button-request-quote-nav"
@@ -95,15 +104,15 @@ export function Navigation() {
             {navItems.map((item) => (
               <button
                 key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-4 py-3 text-base font-medium text-foreground hover-elevate rounded-md"
+                onClick={() => handleNavigation(item.href)}
+                className="block w-full text-left px-4 py-3 text-base font-medium text-foreground hover-elevate rounded-md transition-smooth hover:bg-primary/5"
                 data-testid={`link-mobile-${item.label.toLowerCase()}`}
               >
                 {item.label}
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection("#contact")}
+              onClick={() => handleNavigation("#contact")}
               className="w-full mt-4"
               data-testid="button-request-quote-mobile"
             >

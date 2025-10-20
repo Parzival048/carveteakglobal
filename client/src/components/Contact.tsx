@@ -16,7 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { insertContactSubmissionSchema, type InsertContactSubmission } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 
 export function Contact() {
   const { toast } = useToast();
@@ -83,8 +83,9 @@ export function Contact() {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Location</h4>
                   <p className="text-muted-foreground">
-                    123 Furniture Street, Craft District<br />
-                    Jaipur, Rajasthan 302001, India
+                    SNO.112/1 NR. KHANDOBA MANDIR<br />
+                    PUNAWALE, PUNE CITY<br />
+                    PUNE-411033, MAHARASHTRA
                   </p>
                 </div>
               </div>
@@ -94,7 +95,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                  <p className="text-muted-foreground">+91 787 558 0558</p>
+                  <p className="text-muted-foreground">+91 77580 77875</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -103,17 +104,37 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                  <p className="text-muted-foreground">info@woodencrafts.com</p>
+                  <p className="text-muted-foreground">Carvetealglobal@gmail.com</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-primary/5 p-6 rounded-lg">
+            <div className="bg-primary/5 p-6 rounded-lg mb-6">
               <h4 className="font-semibold text-foreground mb-3">Business Hours</h4>
               <div className="space-y-2 text-muted-foreground">
                 <p>Monday - Saturday: 9:00 AM - 7:00 PM</p>
                 <p>Sunday: 10:00 AM - 5:00 PM</p>
               </div>
+            </div>
+
+            <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+              <div className="flex items-center gap-3 mb-3">
+                <MessageCircle className="w-6 h-6 text-green-600" />
+                <h4 className="font-semibold text-foreground">Quick Chat on WhatsApp</h4>
+              </div>
+              <p className="text-muted-foreground mb-4">
+                Get instant responses to your inquiries. Chat with us directly on WhatsApp.
+              </p>
+              <a
+                href="https://wa.me/917758077875?text=Hello! I'm interested in your handcrafted wooden furniture."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                data-testid="button-whatsapp-contact"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Chat on WhatsApp
+              </a>
             </div>
           </div>
 

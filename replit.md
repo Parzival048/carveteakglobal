@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a furniture showcase and lead generation website for a traditional wooden furniture company specializing in handcrafted Sheesham and Teak wood furniture. The application is designed to present products in an elegant, visually appealing manner while capturing customer inquiries through contact forms. It follows modern e-commerce design patterns with a focus on natural aesthetics and trust-building.
+This is a furniture showcase and lead generation website for a traditional wooden furniture company specializing in handcrafted Sagwan and Teak wood furniture. The application is designed to present products in an elegant, visually appealing manner while capturing customer inquiries through contact forms. It follows modern e-commerce design patterns with a focus on natural aesthetics and trust-building.
 
 The tech stack consists of:
 - **Frontend**: React with TypeScript, Vite build system

@@ -22,6 +22,11 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+        <div className="mb-6">
+          <p className="text-lg md:text-xl text-white/80 font-medium mb-4" data-testid="text-brand-slogan">
+            Carve Teak Global: The Soul of Teak, Carved by Hand
+          </p>
+        </div>
         <h1
           className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           data-testid="text-hero-title"
@@ -32,7 +37,7 @@ export function Hero() {
           className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto font-medium"
           data-testid="text-hero-tagline"
         >
-          Traditional Craftsmanship in Sheesham & Teak Wood
+          Traditional Craftsmanship in Sagwan & Teak Wood
         </p>
         <p className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto">
           Discover timeless elegance with our handcrafted furniture collection.
