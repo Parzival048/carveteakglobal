@@ -61,7 +61,9 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || '5000', 10);
-  const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1';
+  // Bind to 0.0.0.0 to allow external connections (required for Render, Railway, etc.)
+  // Use 127.0.0.1 only in local development when REPL_ID is set (Replit environment)
+  const host = process.env.REPL_ID ? '127.0.0.1' : '0.0.0.0';
   server.listen(port, host, () => {
     log(`serving on ${host}:${port}`);
   });

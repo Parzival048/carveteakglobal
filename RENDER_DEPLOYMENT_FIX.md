@@ -1,16 +1,18 @@
-# Render Deployment Fix - PostCSS Configuration
+# Render Deployment Fix - PostCSS & Port Binding
 
-## ✅ Issue Resolved
+## ✅ Issues Resolved
 
-Fixed the PostCSS configuration error that was preventing successful deployment on Render.
+Fixed two critical issues preventing successful deployment on Render:
+1. PostCSS configuration error
+2. Port binding issue (server not accessible externally)
 
 ---
 
-## 🐛 The Problem
+## 🐛 Problem #1: PostCSS Configuration
 
 ### **Error Message**
 ```
-A PostCSS plugin did not pass the `from` option to `postcss.parse`. 
+A PostCSS plugin did not pass the `from` option to `postcss.parse`.
 This may cause improper assets to be incorrectly transformed.
 ```
 
@@ -24,9 +26,36 @@ The `postcss.config.js` file was using ES module syntax (`export default`) while
 
 ---
 
-## 🔧 The Solution
+## 🐛 Problem #2: Port Binding (CRITICAL)
 
-### **Changes Made**
+### **Error Message**
+```
+==> No open ports detected on 0.0.0.0, continuing to scan...
+==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+```
+
+### **Root Cause**
+The server was listening on `127.0.0.1` (localhost only) instead of `0.0.0.0` (all network interfaces). This prevented Render from accessing the server externally.
+
+**Code Issue (server/index.ts line 64):**
+```typescript
+// WRONG - Only accessible locally
+server.listen(port, "127.0.0.1", () => {
+  log(`serving on port ${port}`);
+});
+```
+
+### **Impact**
+- Server started but was not accessible
+- Render couldn't detect open ports
+- Deployment failed with "No open ports detected"
+- Website was unreachable
+
+---
+
+## 🔧 The Solutions
+
+### **Fix #1: PostCSS Configuration**
 
 #### **1. Renamed Configuration File**
 - **Before:** `postcss.config.js`
