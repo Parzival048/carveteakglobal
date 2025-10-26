@@ -7,7 +7,7 @@ import { fromZodError } from "zod-validation-error";
 // Email notification function
 async function sendEmailNotification(submission: ContactSubmission): Promise<void> {
   try {
-    const adminEmail = process.env.ADMIN_EMAIL || "Carvetealglobal@gmail.com";
+    const adminEmail = process.env.ADMIN_EMAIL || "carveteakglobal@gmail.com";
 
     // Send email notification using FormSubmit.co
     // This is a free service that doesn't require API keys
@@ -28,7 +28,6 @@ Message:
 ${submission.message}
 
 ---
-Company: GAU VEDA GLOBAL LLP
 Submission ID: ${submission.id}
 Submitted: ${submission.createdAt.toLocaleString()}
       `.trim(),
