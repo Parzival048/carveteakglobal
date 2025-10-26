@@ -6,7 +6,7 @@ interface WhatsAppButtonProps {
 }
 
 export function WhatsAppButton({ productName, productId }: WhatsAppButtonProps) {
-  const phoneNumber = "917758077875";
+  const phoneNumber = "917758067875";
   const [message, setMessage] = useState("");
 
   useEffect(() => {

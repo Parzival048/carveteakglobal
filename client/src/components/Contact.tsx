@@ -95,7 +95,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                  <p className="text-muted-foreground">+91 77580 77875</p>
+                  <p className="text-muted-foreground">+91 7758067875</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -126,7 +126,7 @@ export function Contact() {
                 Get instant responses to your inquiries. Chat with us directly on WhatsApp.
               </p>
               <a
-                href="https://wa.me/917758077875?text=Hello! I'm interested in your handcrafted wooden furniture."
+                href="https://wa.me/917758067875?text=Hello! I'm interested in your handcrafted wooden furniture."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
